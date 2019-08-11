@@ -51,14 +51,16 @@ void printColor(const vec3& col) {
 }
 
 int main() {
-  int factor = 200;
+  int factor = 150;
   int nSamples = 50;
-  int nPixelsHorizontal = 2 * factor, nPixelsVertical = 1 * factor;
+  int aspectRatioWidth = 2, aspectRatioHeight = 2;
+  int nPixelsHorizontal = aspectRatioHeight * factor;
+  int nPixelsVertical = aspectRatioWidth * factor;
 
   vec3 origin          { 0.f, 0.f, 0.f };
-  vec3 lowerLeftCorner { -2.f, -1.f, -1.f };
-  vec3 horizontal      { 4.f, 0.f, 0.f };
-  vec3 vertical        { 0.f, 2.f, 0.f };
+  vec3 lowerLeftCorner { -float(aspectRatioHeight), -float(aspectRatioWidth), -1.f };
+  vec3 horizontal      { 2*float(aspectRatioHeight), 0.f, 0.f };
+  vec3 vertical        { 0.f, 2*float(aspectRatioWidth), 0.f };
 
   std::vector<Sphere> objects {
     Sphere { vec3 {0.f, -100.5f, -1.f}, 100.f },
