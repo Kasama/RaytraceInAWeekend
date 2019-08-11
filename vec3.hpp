@@ -131,11 +131,16 @@ inline std::ostream& operator<<(std::ostream& os, const vec3& vector) {
 }
 
 //////////////////////////////////////////////////////////////////////////
-/* other functions
+// other functions
+
+float RandFloat01() {
+    return (rand() % (RAND_MAX))/ float(RAND_MAX); // REPLACE THIS
+}
 
 vec3 RandomInUnitSphere() {
 	vec3 p;
 	do {
+		// p = vec3(drand48(), drand48(), drand48());
 		p = vec3(RandFloat01(), RandFloat01(), RandFloat01());
 	} while(p.SqrLength() >= 1);
 
@@ -145,7 +150,7 @@ vec3 RandomInUnitSphere() {
 vec3 RandomInUnitDisk() {
 	vec3 p;
 	do {
-		p = 2.f * vec3(RandFloat01(), RandFloat01(), 0) - vec3(1, 1, 0);
+		p = 2.f * vec3(drand48(), drand48(), 0) - vec3(1, 1, 0);
 	} while (p.SqrLength() >= 1);
 	return p;
 }
@@ -155,4 +160,3 @@ vec3 LinearToSRGB(vec3 rgb) {
 				std::max(1.055f * powf(rgb.g, 0.416666667f) - 0.055f, 0.0f),
 				std::max(1.055f * powf(rgb.b, 0.416666667f) - 0.055f, 0.0f));
 }
-*/
